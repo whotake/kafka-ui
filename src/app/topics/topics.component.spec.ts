@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopicsComponent } from './topics.component';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { RouterTestingModule } from '@angular/router/testing';
+
 
 describe('TopicsComponent', () => {
   let component: TopicsComponent;
@@ -8,6 +11,10 @@ describe('TopicsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        NgZorroAntdModule,
+      ],
       declarations: [ TopicsComponent ]
     })
     .compileComponents();

@@ -1,1 +1,28 @@
-<p>topic-list works!</p>
+<nz-table
+  #topicListTable
+  [nzData]="data"
+  [nzShowPagination]="false"
+>
+  <thead>
+    <tr>
+      <th nzLeft="0px">Topic Name</th>
+      <th nzWidth="100px">Partitions</th>
+      <th nzWidth="100px">Replication</th>
+      <th nzWidth="100px">Configs</th>
+      <th nzRight="0px" nzAlign="right"></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let topic of topicListTable.data">
+    <tr>
+      <td>{{ topic.title }}</td>
+      <td nzAlign="center">{{ topic.partitions }}</td>
+      <td nzAlign="center">{{ topic.replication }}</td>
+      <td nzAlign="center">{{ topic.configs }}</td>
+      <td nzAlign="right">
+        <button nz-button nzType="primary" nzShape="circle">
+          <i nz-icon nzType="double-right"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
