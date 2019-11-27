@@ -1,6 +1,25 @@
-<div class="Layout">
-  <app-global-nav></app-global-nav>
-  <div class="Layout__content">
+<nz-layout class="Layout">
+  <nz-sider class="Sidebar" nzCollapsible [(nzCollapsed)]="isCollapsed">
+    <div class="Sidebar__logo">
+      <h1>Kafaka UI</h1>
+    </div>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item nzMatchRouterExact>
+        <a [routerLink]="['/']">
+          <i nz-icon nzType="dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/topics']">
+          <i nz-icon nzType="fork"></i>
+          <span>Topics</span>
+        </a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
     <router-outlet></router-outlet>
-  </div>
-</div>
+  </nz-layout>
+</nz-layout>
