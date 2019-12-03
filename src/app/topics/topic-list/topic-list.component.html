@@ -14,14 +14,19 @@
   </thead>
   <tbody *ngFor="let topic of topicListTable.data">
     <tr>
-      <td>{{ topic.title }}</td>
-      <td nzAlign="center">{{ topic.partitions }}</td>
-      <td nzAlign="center">{{ topic.replication }}</td>
-      <td nzAlign="center">{{ topic.configs }}</td>
+      <td>
+        <a [routerLink]="['/topics', topic.name]">
+          {{ topic.name }}
+        </a>
+
+      </td>
+      <td nzAlign="center">{{ topic.partitions.length }}</td>
+      <td nzAlign="center">?</td>
+      <td nzAlign="center">?</td>
       <td nzAlign="right">
-        <button nz-button nzType="primary" nzShape="circle">
+        <a nz-button nzType="dashed" [routerLink]="['/topics', topic.name]">
           <i nz-icon nzType="double-right"></i>
-        </button>
+        </a>
       </td>
     </tr>
   </tbody>

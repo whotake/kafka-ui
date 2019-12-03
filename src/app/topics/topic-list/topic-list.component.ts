@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface TopicData {
-  title: string;
-  partitions: number;
-  replication: number;
-  configs: number;
-}
+import { TopicsService } from '../topics.service';
+import { Topic } from '@interfaces/topic.interface';
 
 @Component({
   selector: 'app-topic-list',
@@ -14,23 +9,17 @@ interface TopicData {
 })
 export class TopicListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: TopicsService) { }
 
-  data: TopicData[] = [];
+  data: Topic[] = [];
 
   ngOnInit() {
-    this.loadData();
+    this.loadTopics();
   }
 
-  loadData(): void {
-    this.data = new Array(5).fill({}).map((_, index) => {
-      return {
-        title: `ant design part ${index}`,
-        partitions: 10,
-        replication: 1,
-        configs: 22,
-      };
-    });
+  loadTopics(): void {
+    this.service.getTopics()
+      .subscribe((json => this.data = json));
   }
 
 
